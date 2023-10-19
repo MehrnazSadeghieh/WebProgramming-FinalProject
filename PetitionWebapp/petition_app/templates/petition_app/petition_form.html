@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Petition Form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../static/user_app/login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="testbox">
+        <!-----------------  header section ---------------->
+        {% include "./header-section.html" %}
+
+        <!--middlePart-->
+        <form method="post">
+            {% csrf_token %}
+            <div class="item">
+                <label for="name"><span>*</span>نام کاربری شما</label>
+                <input id="name" type="text" name="name" value="{{ petition.user_created }}" required />
+            </div>
+            <div class="item">
+                <label for="title"><span>*</span>عنوان کارزار</label>
+                <input id="title" type="text" name="title" value="{{ petition.name }}" required />
+            </div>
+            <div class="item">
+                <label for="content">متن کارزار</label>
+                <textarea id="content" name="content" value="{{ petition.content }}" rows="4" cols="50">
+                </textarea>
+            </div>
+            <div class="item">
+                <label for="password"><span>*</span>کد دریافتی در پیامک</label>
+                <input id="password" type="text" name="password" required />
+            </div>
+
+            <div class="item">
+                <label for="supporters"><span>*</span>این بیانیه توسط چه بخشی از مردم حمایت می‌شود؟</label>
+                <input id="supporters" type="text" name="supporters" required />
+            </div>
+
+            <div class="item">
+                <label for="myFile">تصویر کارزار</label>
+                <input type="file" id="myFile" name="filename" value="{{ petition.image }}">
+            </div>
+
+            <div class="item">
+                <label for="date"><span>*</span>تاریخ پایان کارزار</label>
+                <input type="date" id="date" name="date" value="{{ petition.end_datetime }}">
+            </div>
+
+            <div class="item">
+                <label for="fields"><span>*</span>فیلدهای پیشنهادی برای فرم ثبت امضا</label>
+                <input id="fields" type="name" name="name" required />
+            </div>
+
+            <div class="item">
+                <label for="introduce"><span>*</span>روش آشنا شدن شما با کارزار</label>
+                <br>
+                <br>
+                <select id="introduce" name="introduce" class="select-intro">
+                    <option value="volvo">جستجو نمایید</option>
+                    <option value="volvo">جستجو در گوگل</option>
+                    <option value="saab">امضای سایر کارزارها</option>
+                    <option value="fiat">شبکه‌های اجتماعی</option>
+                    <option value="audi">سایت‌های خبری و روزنامه‌ها</option>
+                    <option value="audi">معرفی دوستان</option>
+                    <option value="audi">سایر</option>
+                </select>
+
+            </div>
+
+            <div class="item">
+                <label for="description">سایر توضیحات</label>
+                <textarea id="description" name="description" rows="4" cols="50">
+                </textarea>
+            </div>
+
+            <div class="btn-block">
+                <button style="border-radius: 8px; font-family: sans-serif;" type="submit">ثبت کارزار</button>
+            </div>
+            <div class="btn-block">
+                <button style="border-radius: 8px; font-family: sans-serif;" type="submit">بروزرسانی کارزار</button>
+            </div>
+        </form>
+
+        <!-----------------  footer ---------------->
+        {% include "./footer-section.html" %}
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    </div>
+</body>
+</html>
